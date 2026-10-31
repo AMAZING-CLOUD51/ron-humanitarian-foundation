@@ -22,10 +22,10 @@ export const ImpactStories: React.FC<ImpactStoriesProps> = ({
     const imagesToPreload = [
       '/assets/aistudio/1000002266_94850bb3.jpg',
       '/assets/aistudio/unnamed_2_ee2ea191.webp',
-      '/assets/aistudio/unnamed_4_a93bb17c.webp',
+      '/assets/aistudio/1000002247.jpg',
       '/assets/aistudio/1000002320_ee0217bd.jpg',
       '/assets/aistudio/1000002263_367a3370.jpg',
-      '/assets/aistudio/ron_pictures_5151457a.PNG',
+      '/assets/aistudio/ron_pictures_5151457a.png',
     ];
     imagesToPreload.forEach((src) => {
       const img = new Image();
@@ -126,8 +126,8 @@ export const ImpactStories: React.FC<ImpactStoriesProps> = ({
             <div className="group flex flex-col">
               <div className="h-[260px] sm:h-[320px] rounded-[24px] overflow-hidden bg-gray-100 border border-gray-100 relative">
                 <OptimizedImage
-                  src="/assets/aistudio/unnamed_4_a93bb17c.webp"
-                  alt="Medical personnel in lab coats and RON caps conducting clinical screening and diagnosis for community members"
+                  src="/assets/aistudio/1000002247.jpg"
+                  alt="RON healthcare medical volunteer conducting blood pressure screening and clinical diagnosis for an elder in the community"
                   title="Community Health Screenings & Diagnosis • Bassa LGA, Plateau"
                   className="w-full h-full rounded-[24px]"
                 />
@@ -198,8 +198,8 @@ export const ImpactStories: React.FC<ImpactStoriesProps> = ({
             <div className="group flex flex-col">
               <div className="h-[260px] sm:h-[320px] rounded-[24px] overflow-hidden bg-gray-100 border border-gray-100 relative">
                 <OptimizedImage
-                  src="/assets/aistudio/ron_pictures_5151457a.PNG"
-                  alt="IDP community mobilization and grassroots reach under the neem tree"
+                  src="/assets/aistudio/ron_pictures_5151457a.png"
+                  alt="IDP community mobilization and grassroots reach meeting under the neem tree"
                   title="IDP Camp Mobilisation & Grassroots Reach • Abuja"
                   className="w-full h-full rounded-[24px]"
                 />

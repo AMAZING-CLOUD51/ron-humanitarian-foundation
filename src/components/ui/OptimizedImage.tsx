@@ -37,6 +37,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [webpFailed, setWebpFailed] = useState(false);
   const { openLightbox } = useLightbox();
 
   // WebP URL generation (all our assets have .webp counterparts)
@@ -47,7 +48,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     if (onClick) {
       onClick();
     }
-    if (enableLightbox) {
+    if (enableLightbox && !hasError) {
       e.stopPropagation();
       openLightbox({
         src,
@@ -58,17 +59,26 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
   };
 
+  const handleImgError = () => {
+    if (!webpFailed && isInternalAsset) {
+      // Try falling back to raw src without webp source
+      setWebpFailed(true);
+    } else {
+      setHasError(true);
+    }
+  };
+
   return (
     <div
-      onClick={enableLightbox ? handleClick : onClick}
+      onClick={enableLightbox && !hasError ? handleClick : onClick}
       className={`relative overflow-hidden group ${
-        enableLightbox ? 'cursor-zoom-in' : ''
+        enableLightbox && !hasError ? 'cursor-zoom-in' : ''
       } ${aspectRatio} ${className}`}
       style={{
         width: width || undefined,
         height: height || undefined,
       }}
-      title={enableLightbox ? `${alt} (Click to enlarge)` : alt}
+      title={enableLightbox && !hasError ? `${alt} (Click to enlarge)` : alt}
     >
       {/* Soft Placeholder / Skeleton Shimmer - eliminates empty gaps while loading */}
       {!isLoaded && !hasError && (
@@ -76,37 +86,43 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       )}
 
       {/* Modern Picture Element with WebP Source & Fallback */}
-      <picture className="w-full h-full block">
-        {isInternalAsset && (
-          <source srcSet={webpSrc} type="image/webp" />
-        )}
-        <img
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          loading={priority ? 'eager' : 'lazy'}
-          fetchPriority={priority ? 'high' : 'auto'}
-          decoding="async"
-          onLoad={() => setIsLoaded(true)}
-          onError={() => setHasError(true)}
-          className={`w-full h-full transition-all duration-500 ease-out ${
-            objectFit === 'cover'
-              ? 'object-cover'
-              : objectFit === 'contain'
-              ? 'object-contain'
-              : 'object-fill'
-          } ${
-            isLoaded
-              ? 'opacity-100 blur-0 scale-100'
-              : 'opacity-0 blur-xs scale-[0.99]'
-          } ${imageClassName}`}
-          style={{ objectPosition }}
-        />
-      </picture>
+      {!hasError ? (
+        <picture className="w-full h-full block">
+          {isInternalAsset && !webpFailed && (
+            <source srcSet={webpSrc} type="image/webp" />
+          )}
+          <img
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
+            decoding="async"
+            onLoad={() => setIsLoaded(true)}
+            onError={handleImgError}
+            className={`w-full h-full transition-all duration-500 ease-out ${
+              objectFit === 'cover'
+                ? 'object-cover'
+                : objectFit === 'contain'
+                ? 'object-contain'
+                : 'object-fill'
+            } ${
+              isLoaded
+                ? 'opacity-100 blur-0 scale-100'
+                : 'opacity-0 blur-xs scale-[0.99]'
+            } ${imageClassName}`}
+            style={{ objectPosition }}
+          />
+        </picture>
+      ) : (
+        <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 text-slate-400 p-4 text-center">
+          <span className="text-xs font-medium line-clamp-2">{alt}</span>
+        </div>
+      )}
 
       {/* Subtle Zoom Badge on Hover when Lightbox is enabled */}
-      {enableLightbox && isLoaded && (
+      {enableLightbox && isLoaded && !hasError && (
         <div className="absolute bottom-3 right-3 bg-[#0D1722]/75 hover:bg-[#FDB913] text-white hover:text-[#0D1722] p-1.5 sm:p-2 rounded-full backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-md scale-90 group-hover:scale-100 pointer-events-none">
           <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
         </div>
