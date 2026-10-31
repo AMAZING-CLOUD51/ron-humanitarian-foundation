@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-sans: 'Nunito', system-ui, -apple-system, sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  --color-navy-base: #1F3A8A;
+  --color-royal-blue: #0B2A8A;
+  --color-gold-accent: #FDB913;
+  --color-near-black: #0D1722;
+  --color-text-grey: #333333;
+}
+
+@layer base {
+  body {
+    font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333333;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', Georgia, serif;
+    line-height: 1.15;
+    text-align: left;
+  }
+}
+
+.font-heading {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+}
+
+.font-script {
+  font-family: 'Caveat', cursive;
+}
+
+/* Custom 60px single-corner card for Who We Are stat cards (top-left rounded 60px per design screenshot) */
+.card-single-corner-60 {
+  border-top-left-radius: 60px !important;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px;
+  border-bottom-left-radius: 22px;
+}
+
+/* Custom asymmetrical card corner */
+.card-single-corner-tr {
+  border-top-right-radius: 40px !important;
+  border-top-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+
+/* Photo 24px corner */
+.photo-rounded {
+  border-radius: 24px;
+}
+
+/* Global Button Hover & Click transition rules (0.3s) */
+.btn-gold-interactive {
+  background-color: #FDB913;
+  color: #0D1722;
+  transition: all 0.3s ease;
+}
+
+.btn-gold-interactive:hover {
+  background-color: #1F3A8A !important;
+  color: #ffffff !important;
+}
+
+.btn-gold-interactive:active {
+  background-color: #15275e !important;
+  color: #ffffff !important;
+}
+
+/* Dark program cards: turn ash grey #5B6370 with gold border on hover */
+.card-program-interactive {
+  transition: all 0.3s ease;
+}
+
+.card-program-interactive:hover {
+  background-color: #5B6370 !important;
+  border-color: #FDB913 !important;
+  transform: translateY(-4px);
+}
+
+/* Location cards: turn gold on hover smoothly in 0.3s */
+.card-location-interactive {
+  transition: all 0.3s ease;
+}
+
+.card-location-interactive:hover {
+  background-color: #FDB913 !important;
+  color: #0D1722 !important;
+  border-color: #FDB913 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(253, 185, 19, 0.25);
+}
+
+.card-location-interactive:hover .location-text,
+.card-location-interactive:hover .location-number,
+.card-location-interactive:hover .location-label,
+.card-location-interactive:hover .location-icon {
+  color: #0D1722 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Continuously scrolling marquee animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

@@ -1,0 +1,7 @@
+{
+  "name": "RON Humanitarian Foundation",
+  "description": "Official website of RON Humanitarian Foundation, a Nigerian humanitarian NGO based in Abuja supporting vulnerable individuals through humanitarian support, education, health, and economic empowerment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
