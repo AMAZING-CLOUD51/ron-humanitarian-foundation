@@ -183,9 +183,9 @@ export const ProgramDetail: React.FC<ProgramDetailProps> = ({
       // Local storage fallback
     }
 
-    // 2. Deliver email directly to ronfoundation@gmail.com
+    // 2. Deliver email directly to ronhumanitarianfoundation@gmail.com
     try {
-      await fetch('https://formsubmit.co/ajax/ronfoundation@gmail.com', {
+      await fetch('https://formsubmit.co/ajax/ronhumanitarianfoundation@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -357,7 +357,7 @@ export const ProgramDetail: React.FC<ProgramDetailProps> = ({
                       Thank you for reaching out!
                     </h5>
                     <p className="text-base text-[#333333] mt-1">
-                      Your message has been sent directly to our team at <strong className="text-[#1F3A8A]">ronfoundation@gmail.com</strong>.
+                      Your message has been sent directly to our team at <strong className="text-[#1F3A8A]">ronhumanitarianfoundation@gmail.com</strong>.
                     </p>
                   </div>
                 </div>

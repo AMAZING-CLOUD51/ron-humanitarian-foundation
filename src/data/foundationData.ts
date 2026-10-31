@@ -4,7 +4,7 @@ export const FOUNDATION_INFO = {
   name: 'RON Humanitarian Foundation',
   shortName: 'RON Foundation',
   rcNumber: 'RC-8594046',
-  email: 'ronfoundation@gmail.com',
+  email: 'ronhumanitarianfoundation@gmail.com',
   phone1: '+234 707 710 4798',
   phone2: '+234 803 914 4776',
   phone1Raw: '+2347077104798',

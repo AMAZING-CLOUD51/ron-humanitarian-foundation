@@ -56,9 +56,9 @@ export const Volunteer: React.FC<VolunteerProps> = ({ onNavigate }) => {
       // fallback
     }
 
-    // Deliver directly to ronfoundation@gmail.com
+    // Deliver directly to ronhumanitarianfoundation@gmail.com
     try {
-      await fetch('https://formsubmit.co/ajax/ronfoundation@gmail.com', {
+      await fetch('https://formsubmit.co/ajax/ronhumanitarianfoundation@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ export const Volunteer: React.FC<VolunteerProps> = ({ onNavigate }) => {
                       Application Received!
                     </h5>
                     <p className="text-base text-[#333333] mt-1">
-                      Thank you for offering your heart and time. Your details have been sent to our team at <strong className="text-[#1F3A8A]">ronfoundation@gmail.com</strong>.
+                      Thank you for offering your heart and time. Your details have been sent to our team at <strong className="text-[#1F3A8A]">ronhumanitarianfoundation@gmail.com</strong>.
                     </p>
                   </div>
                 </div>
